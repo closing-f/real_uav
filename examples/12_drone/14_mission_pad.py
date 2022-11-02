@@ -25,23 +25,25 @@ if __name__ == '__main__':
     tl_drone.initialize()
 
     tl_flight = tl_drone.flight
-
+    tl_flight.takeoff().wait_for_completed()
+    tl_flight.forward(distance=60).wait_for_completed()
     # 打开挑战卡检测
     tl_flight.mission_pad_on()
 
     # 起飞
-    tl_flight.takeoff().wait_for_completed()
+    
 
     # 飞行到挑战卡上方
-    tl_flight.go(x=0, y=0, z=100, speed=30, mid="m1").wait_for_completed()
-
+    tl_flight.go(x=0, y=0, z=40, speed=15, mid="m1").wait_for_completed()
+    tl_flight.mission_pad_off()
+    
     # 挑战卡上曲线飞行
-    tl_flight.curve(x1=50, y1=50, z1=100, x2=100, y2=0, z2=100, speed=30, mid="m1").wait_for_completed()
+    # tl_flight.curve(x1=50, y1=50, z1=100, x2=100, y2=0, z2=100, speed=30, mid="m1").wait_for_completed()
 
     # 降落
     tl_flight.land().wait_for_completed()
 
     # 关闭挑战卡检测
-    tl_flight.mission_pad_off()
+    # tl_flight.mission_pad_off()
 
     tl_drone.close()

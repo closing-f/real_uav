@@ -26,15 +26,22 @@ if __name__ == '__main__':
 
     # 起飞
     tl_flight.takeoff().wait_for_completed()
+    tl_flight.forward(distance=122).wait_for_completed()
+    tl_flight.mission_pad_on()
 
+        # 飞行到挑战卡上方
+    # tl_flight.go(x=0, y=0, z=100, speed=30, mid='m2').wait_for_completed()
+    tl_flight.go(x=0, y=0, z=30, speed=30, mid='m1').wait_for_completed()
     
-
-    # 上升20厘米，下降20厘米
-    tl_flight.up(distance=20).wait_for_completed()
-    tl_flight.down(distance=20).wait_for_completed()
+    
+    # # 上升20厘米，下降20厘米
+    # tl_flight.up(distance=20).wait_for_completed()
+    # tl_flight.down(distance=20).wait_for_completed()
 
     # 降落
     tl_flight.land().wait_for_completed()
+    
+    tl_flight.mission_pad_off()
 
     tl_drone.close()
 
