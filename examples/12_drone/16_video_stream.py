@@ -25,11 +25,9 @@ if __name__ == '__main__':
     # 显示302帧图传
     
     tl_camera.start_video_stream()
-    tl_camera.set_down_vision(0)
-    # tl_camera.set_fps("high")
-    # tl_camera.set_resolution("high")
-    # tl_flight.mission_pad_on()
-
+    tl_camera.set_down_vision(1)
+    tl_camera.set_fps("high")
+    tl_camera.set_resolution("high")
     tl_camera.set_bitrate(6)
     for i in range(0, 302):
         img = tl_camera.read_cv2_image()
